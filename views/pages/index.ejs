@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Company | Shop</title>
+
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+<%- include('../partials/header'); %>
+
+<main class="container flex-center threepercent-lr-margin wrap">
+    <% products.forEach((product) => { %>
+        <div class="product">
+            <img src="<%= product.image %>" alt="<%= product.name %>" class="product-img"></img>
+            <div class="justify-center buy-button">
+                <% if(product.in_stock) { %>
+                    <a href="#" class="no-decoration">Buy</a>
+                <% } else { %>
+                    No Stock
+                <% } %>
+            </div>
+        </div>
+    <% })%>
+</main>
+
+<%- include('../partials/footer'); %>
+</body>
+</html>

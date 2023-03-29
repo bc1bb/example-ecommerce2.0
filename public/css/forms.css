@@ -1,0 +1,28 @@
+input {
+    display: flex;
+    border: 1px solid var(--black);
+    background: var(--black);
+    border-radius: 4px;
+    margin-bottom: 10%;
+    height: 1.5rem;
+    font-size: medium;
+    color: white;
+}
+
+button {
+    display: flex;
+    border: 1px solid var(--black);
+    background: var(--black);
+    border-radius: 4px;
+    padding: 30%;
+    height: 2.75rem;
+    font-size: medium;
+    color: white;
+    font-weight: bolder;
+}
+
+form {
+    padding: 3%;
+    border-radius: 3px;
+    border: 2px solid var(--black)
+}
