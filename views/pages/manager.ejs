@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Company | Shop</title>
+
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/css/manager.css">
+</head>
+<body>
+
+<%- include('../partials/header'); %>
+
+<main class="container flex-center threepercent-lr-margin wrap">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>In Stock</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+
+        <%# `products` is given when calling page (see index.js) %>
+        <% products.forEach((product) => { %>
+            <tr>
+                <th><%= product.name %></th>
+                <th><%= product.price %> €</th>
+                <% if(product.in_stock) { %>
+                    <th>Yes</th>
+                <% } else { %>
+                    <th>No</th>
+                <% } %>
+                <th><img width="50" src="<%= product.image %>"></th>
+                <th><div class="justify-center buy-button"><a href="/manager/delete/<%= product.id %>" class="no-decoration">Delete</a></div></th>
+            </tr>
+        <% })%>
+    </table>
+</main>
+
+<%- include('../partials/footer'); %>
+</body>
+</html>
