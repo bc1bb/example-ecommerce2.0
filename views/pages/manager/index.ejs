@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Company | Shop</title>
+    <title>Company | Manager</title>
 
-    <%- include('../partials/head'); %>
+    <%- include('../../partials/head'); %>
     <link rel="stylesheet" href="/css/manager.css">
 </head>
 <body>
 
-<%- include('../partials/header'); %>
+<%- include('../../partials/header'); %>
 
 <main class="container flex-center threepercent-lr-margin wrap">
     <table>
@@ -31,12 +31,12 @@
                     <th>No</th>
                 <% } %>
                 <th><img width="50" src="<%= product.image %>"></th>
-                <th><div class="justify-center buy-button"><a href="/manager/delete/<%= product.id %>" class="no-decoration">Delete</a></div></th>
+                <th><a href="/manager/delete/<%= product.id %>" class="no-decoration">Delete</a> | <a href="/manager/update/<%= product.id %>" class="no-decoration">Update</a></th>
             </tr>
         <% })%>
     </table>
 </main>
 
-<%- include('../partials/footer'); %>
+<%- include('../../partials/footer'); %>
 </body>
 </html>

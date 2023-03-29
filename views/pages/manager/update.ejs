@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Company | Manager</title>
+
+    <%- include('../../partials/head'); %>
+    <link rel="stylesheet" href="/css/manager.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<%- include('../../partials/header'); %>
+
+<main class="container flex-center threepercent-lr-margin wrap">
+    <form class="container wrap flex-column" action="/manager/update/<%= product.id %>" method="post">
+        <div class="container wrap flex-column">
+            <label hidden="hidden" for="product_name">Product Name</label>
+            <input type="text" required placeholder="Product Name" value="<%= product.name %>" id="product_name" name="product_name" />
+        </div>
+        <div class="container wrap flex-column">
+            <label hidden="hidden" for="price">Price</label>
+            <input type="number" required placeholder="Price" value="<%= product.price %>" id="price" name="price" />
+        </div>
+        <div class="container wrap flex-column">
+            <label hidden="hidden" for="image">Image URL</label>
+            <input type="text" required placeholder="Image URL" value="<%= product.image %>" id="image" name="image" />
+        </div>
+        <div class="container threepercent-lr-margin">
+            <label for="stock">Available?</label>
+            <input type="checkbox" id="stock" name="stock" <% if(product.in_stock) {%>value="on" checked<%} %> >
+        </div>
+
+        <div class="container wrap flex-column">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</main>
+
+<%- include('../../partials/footer'); %>
+</body>
+</html>

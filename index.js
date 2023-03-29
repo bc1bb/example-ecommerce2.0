@@ -40,8 +40,8 @@ app.get('/cart', (req, res) => {
 // Acknowledging GET calls on /manager
 app.get('/manager', (req, res) => {
     // Checking products from database to fill page
-    connection.query("SELECT * FROM products", (err, rows, fields) => {
-        res.render('pages/manager', { products: rows });
+    connection.query("SELECT * FROM products", (err, rows) => {
+        res.render('pages/manager/index', { products: rows });
     })
 })
 
@@ -50,10 +50,35 @@ app.get('/manager/:action/:id', (req, res) => {
     // If action asked is delete, delete given id, using ? escapes string from unsafe characters
     if(req.params.action === "delete") {
         connection.query("DELETE FROM products WHERE id = ?", [req.params.id]);
+
+        // Redirect user back
+        res.redirect("/manager");
     }
 
-    // Redirect user to last page
-    res.redirect("/manager");
+    // If action asked is update, show update page
+    if(req.params.action === "update") {
+        connection.query("SELECT * FROM products WHERE id = ?", [req.params.id], (err, rows) => {
+            res.render('pages/manager/update', { product: rows[0] });
+        })
+    }
+})
+
+// Acknowledging POST calls on /manager/.../...
+app.post('/manager/:action/:id', (req, res) => {
+    // If action asked is update, update
+    if(req.params.action === "update") {
+        let stock = 0;
+
+        if(req.body.stock === "on") {
+            stock = 1;
+        }
+
+        // Update product with informations given
+        connection.query("UPDATE products SET name = ?, price = ?, in_stock = ?, image = ? WHERE id = ?", [req.body.product_name, parseInt(req.body.price), stock,  req.body.image, req.params.id]);
+
+        // Redirect user back
+        res.redirect("/manager");
+    }
 })
 
 // Running app
