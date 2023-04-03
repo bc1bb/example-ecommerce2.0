@@ -33,7 +33,15 @@
                 <th><img width="50" src="<%= product.image %>"></th>
                 <th><a href="/manager/delete/<%= product.id %>" class="no-decoration">Delete</a> | <a href="/manager/update/<%= product.id %>" class="no-decoration">Update</a></th>
             </tr>
-        <% })%>
+        <% }) %>
+
+        <tr>
+            <th>Empty</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th><a href="/manager/create/0/" class="no-decoration">Create</a></th>
+        </tr>
     </table>
 </main>
 

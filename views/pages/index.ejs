@@ -17,13 +17,13 @@
             <div class="justify-center buy-button">
                 <%# if in_stock is true, show Buy button... %>
                 <% if(product.in_stock) { %>
-                    <a href="#" class="no-decoration">Buy</a>
+                    <a href="/cart/add/<%= product.id %>" class="no-decoration">Buy</a>
                 <% } else { %>
                     No Stock
                 <% } %>
             </div>
         </div>
-    <% })%>
+    <% }) %>
 </main>
 
 <%- include('../partials/footer'); %>
